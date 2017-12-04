@@ -7,6 +7,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -121,12 +122,48 @@ public class TransaviaTestSteps {
 
     @And("^Select Return on date \"([^\"]*)\"$")
     public void selectReturnOnDate(String arg0) throws Throwable {
+
+        List<WebElement> allDates=webDriver.findElements(By.xpath("//table[@class='ui-datepicker-calendar']//td"));
+
+        for(WebElement ele:allDates)
+        {
+
+            String date=ele.getText();
+
+            if(date.equalsIgnoreCase("28"))
+            {
+                ele.click();
+                break;
+            }
+
+        }
+        webDriver.findElement(By.id("dateSelection_IsReturnFlight-datepicker")).click();
+        webDriver.findElement(By.id("dateSelection_IsReturnFlight-datepicker")).clear();
+
+        webDriver.findElement(By.id("dateSelection_IsReturnFlight-datepicker")).sendKeys(arg0);
+
+        // webDriver.findElement(By.id("dateSelection_IsReturnFlight")).click();
+/*
+
+
+
+
+
         //Thread.sleep(1000);
         webDriver.findElement(By.id("dateSelection_IsReturnFlight-datepicker")).click();
         webDriver.findElement(By.id("dateSelection_IsReturnFlight-datepicker")).clear();
         webDriver.findElement(By.id("dateSelection_IsReturnFlight-datepicker")).sendKeys(arg0);
         webDriver.findElement(By.id("dateSelection_IsReturnFlight-datepicker")).click();
+        */
+/*if(webDriver.findElement(By.id("ui-datepicker-div")).isSelected())
+            webDriver.findElement(By.id("ui-datepicker-div")).click();*//*
+
+        WebElement element = webDriver.findElement(By.className("togglepanel-container position-right is-visible-intermediate is-visible __web-inspector-hide-shortcut__"));
+        ((JavascriptExecutor)webDriver).executeScript("arguments[0].style.visibility='hidden'", element);
+*/
+
     }
+
 
     @And("^Select the number of people travelling \"([^\"]*)\"$")
     public void selectTheNumberOfPeopleTravelling(String arg0) throws Throwable {
@@ -136,6 +173,6 @@ public class TransaviaTestSteps {
 
     @Then("^user click on Search Button \"([^\"]*)\"$")
     public void userClickOnSearchButton(String arg0) throws Throwable {
-        webDriver.findElement(By.ByXPath.xpath("//*[@id=\"flights\"]/div/section/div[3]/div/button[2]")).click();
+        webDriver.findElement(By.ByXPath.xpath("//*[@id=\"desktop\"]/section/div[3]/div/button")).click();
     }
 }
