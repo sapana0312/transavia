@@ -63,6 +63,7 @@ public class TransaviaTestSteps {
     public void userIsLoginWithHomePage() throws Throwable {
         List<WebElement> list = webDriver.findElements(By.xpath("//*[contains(text(),'" + "Hi Sapana" + "')]"));
         Assert.assertTrue("Text not found!", list.size() > 0);
+        webDriver.quit();
     }
 
     @When("^user click on \"([^\"]*)\" top menu$")
@@ -174,5 +175,8 @@ public class TransaviaTestSteps {
     @Then("^user click on Search Button \"([^\"]*)\"$")
     public void userClickOnSearchButton(String arg0) throws Throwable {
         webDriver.findElement(By.ByXPath.xpath("//*[@id=\"desktop\"]/section/div[3]/div/button")).click();
+        List<WebElement> list = webDriver.findElements(By.xpath("//*[contains(text(),'" + " Outbound flight" + "')]"));
+        Assert.assertTrue("Text not found!", list.size() > 0);
+        webDriver.quit();
     }
 }
