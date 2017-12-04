@@ -1,6 +1,7 @@
 Feature: Login
 
   Scenario: Registered user login
+
     Given User is registered on Transavia
     When on Logon page "https://www.transavia.com/en-EU/my-transavia/account/logon/"
     And User provide registered user ID "sapana.dhuppe@gmail.com"

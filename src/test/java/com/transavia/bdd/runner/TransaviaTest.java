@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         format = { "pretty", "html:target/cucumber" },
         glue = "com.transavia.bdd.steps",
-        features = "classpath:cucumber/transavia.feature"
+        features = {"classpath:cucumber/transavia.feature", "classpath:cucumber/flightbooking.feature" }
 )
 public class TransaviaTest {
 }
